@@ -1,0 +1,36 @@
+.scene {
+  margin: auto;
+  margin-top: 30px;
+  height: min(50vw, 50vh);
+  width: min(50vw, 50vh);
+  flex-direction: column-reverse;
+  position: relative;
+  min-width: 300px;
+  min-height: 300px;
+}
+
+.scene,
+.cell {
+  border: 1px solid #e3e3e3;
+}
+
+.row,
+.cell {
+  flex-basis: 100%;
+}
+
+.scene,
+.row,
+.cell {
+  display: flex;
+}
+
+.cell {
+  align-items: center;
+  justify-content: center;
+}
+
+.coordinate {
+  font-size: 80%;
+  color: #ccc;
+}

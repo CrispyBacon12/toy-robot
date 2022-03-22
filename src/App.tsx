@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { ControlPanel } from "./components/ControlPanel";
+import { Grid } from "./components/Grid";
+import { useScene } from "./renderer/useScene";
+import { Grid as GridModel } from "./models/Grid";
+import { Vector } from "./models/Vector";
+import { useState } from "react";
+
+const grid = new GridModel(new Vector(4, 4));
 
 function App() {
+  const sceneController = useScene(grid);
+  const [debug, setDebug] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Help the Robot Deliver Some Sushi!</h1>
+      <ControlPanel
+        {...sceneController}
+        toggleDebug={() => setDebug((debug) => !debug)}
+      />
+      <Grid {...sceneController} debug={debug} />
     </div>
   );
 }
